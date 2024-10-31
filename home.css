@@ -11,6 +11,7 @@ html {
 
 body {
     color: #ededed;
+    background: url("wallpaper.jpg");
 }
 
 .header {
@@ -18,20 +19,17 @@ body {
     top: 30px;
     left: 30px;
     width: 90%;
-    padding: 20px, 10px;
+    padding: 20px, 10px; /* Corrected padding syntax */
     background: transparent;
     display: flex;
     justify-content: space-between;
     align-items: center;
     z-index: 100;
-    position: fixed;
-    z-index: 1000;
     transition: background-color 0.3s ease;
 }
 
 .sticky {
     background-color: rgba(51, 51, 51, 0.9);
-    /* Slightly transparent */
 }
 
 .logo {
@@ -67,7 +65,6 @@ body {
     width: 100%;
     justify-content: space-between;
     height: 100vh;
-    background: url("wallpaper.jpg");
     background-position: center;
     display: grid;
     grid-template-columns: auto auto;
@@ -160,8 +157,30 @@ body {
     height: 300px;
     width: 300px;
     opacity: 0;
-    animation: slideLeft 2s ease forwards;
+    animation: slideRight 3s ease forwards;
     animation-iteration-count: infinite;
+}
+
+/* Wave Animation */
+@keyframes wave {
+    0% {
+        transform: translateY(10);
+    }
+    20% {
+        transform: translateY(15px); /* Move up */
+    }
+    40% {
+        transform: translateY(5px); /* Move down slightly */
+    }
+    60% {
+        transform: translateY(10px); /* Move up */
+    }
+    80% {
+        transform: translateY(5px); /* Move down slightly */
+    }
+    100% {
+        transform: translateY(0); /* Return to original position */
+    }
 }
 
 @keyframes slideRight {
@@ -211,7 +230,23 @@ body {
         opacity: 1;
     }
 }
-
+@keyframes swing {
+    0% {
+        transform: translateY(0);
+    }
+    25% {
+        transform: translateY(-20px); /* Swing up */
+    }
+    50% {
+        transform: translateY(0);
+    }
+    75% {
+        transform: translateY(10px); /* Swing down */
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
 .topmate-button {
     background: #0ef;
     border-radius: 30px;
@@ -284,11 +319,72 @@ body {
 .text {
     font-size: 40px;
 }
-/* Responsive Styles */
+
+/* General styles remain unchanged */
 
 @media (max-width: 1024px) {
     .header {
         padding: 20px 30px;
+    }
+
+    .home {
+        display: flex;
+        flex-direction: column; /* Stack content vertically */
+        align-items: center; /* Center content */
+        padding: 80px 5%;
+    }
+    .home-content {
+        order: 2; /* Content appears second */
+        text-align: center; /* Center the text */
+    }
+
+    .home-right {
+        order: 1; /* Image appears first */
+        display: flex; /* Flex to center the image */
+        justify-content: center; /* Center image */
+        margin-bottom: 20px; /* Add margin for spacing */
+    }
+    .home-right img {
+        animation: none; /* Stop the animation on mobile */
+        opacity: 1; /* Ensure the image is visible */
+    }
+
+    .home-content {
+        order: 2; /* Content appears second */
+        text-align: center; /* Center the text */
+        width: 100%; /* Make content full width */
+        padding: 0 20px; /* Add some padding */
+    }
+
+    .home-right img {
+        width: 80%; /* Make image responsive */
+        max-width: 300px; /* Limit max width */
+        height: auto; /* Maintain aspect ratio */
+    }
+    /* Show hamburger menu on smaller screens */
+    .menu-toggle {
+        display: block; /* Show hamburger menu */
+        position: fixed;
+        right: 30px; /* Place toggle on the right side */
+    }
+
+    /* Hide navbar on small screens */
+    .navbar {
+        display: none; /* Hide navbar on mobile */
+    }
+
+    .navbar.active {
+        display: flex; /* Show navbar when active */
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        right: 0; /* Menu opens on the right side */
+        width: 30%; /* Adjust width to fit content on the right */
+        background: rgba(54, 167, 219, 0.9);
+        padding: 20px;
+        gap: 15px;
+        border-radius: 20px;
+        text-align: right; /* Align text to the right */
     }
 
     .navbar a {
@@ -305,108 +401,30 @@ body {
     }
 }
 
-@media (max-width: 768px) {
-    .header {
-        flex-direction: column;
-        padding: 10px 20px;
-    }
-
+/* Ensure navbar is visible on larger screens */
+@media (min-width: 1025px) {
     .navbar {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        text-align: center;
-    }
-
-    .navbar a {
-        font-size: 1rem;
-    }
-
-    .home {
-        flex-direction: column;
-        text-align: center;
-        padding: 80px 5%;
-    }
-
-    .home-content h1 {
-        font-size: 1.8rem;
-    }
-
-    .home-right img {
-        width: 200px;
-        height: 200px;
-    }
-}
-
-@media (max-width: 480px) {
-    .home-content h1 {
-        font-size: 1.5rem;
-    }
-
-    .home-content p {
-        font-size: 0.9rem;
-    }
-
-    .navbar a {
-        font-size: 0.9rem;
-        margin-left: 10px;
-    }
-
-    .home-right img {
-        width: 150px;
-        height: 150px;
-    }
-
-    .btn-box {
-        font-size: 0.9rem;
-        padding: 10px 20px;
-    }
-}
-.menu-toggle {
-    display: none;
-    font-size: 24px;
-    color: #fff;
-    cursor: pointer;
-}
-
-/* Mobile Styles */
-@media (max-width: 768px) {
-    .navbar {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 70px;
-        right: 0;
-        width: 100%;
-        background: rgba(0, 0, 0, 0.9);
-        padding: 20px 0;
-        gap: 15px;
-    }
-
-    .navbar.active {
-        display: flex;
-    }
-
-    .navbar a {
-        padding: 10px 20px;
-        text-align: right;
+        display: flex; /* Show navbar */
+        flex-direction: row; /* Display items in a row */
     }
 
     .menu-toggle {
-        display: block;
+        display: none; /* Hide hamburger menu */
     }
-
-    /* Reorder content on mobile */
     .home {
-        flex-direction: column;
-        text-align: center;
+        flex-direction: column; /* Stack content vertically */
+        align-items: center; /* Center content */
+        padding: 80px 5%;
     }
-
+    
     .home-right {
-        order: 1;
+        order: 2; /* Image appears first */
+        display: flex; /* Flex to center the image */
+        justify-content: center; /* Center image */
     }
-
+    
     .home-content {
-        order: 2;
+        order: 1; /* Content appears second */
+        text-align: center; /* Center the text */
     }
 }
