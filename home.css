@@ -393,22 +393,6 @@ body {
     .home-content p {
         font-size: 1rem;
     }
-    .topmate-button {
-        background: #0ef;
-        border-radius: 30px;
-        padding: 5px;
-        float: inline-end;
-        margin-top: 60px;
-        color: #f7f8f8;
-        border: 1px solid #f6fafa;
-        font-size: 13px;
-        position: fixed !important;
-        bottom: 40px;
-        width: 110px;
-        cursor: pointer;
-        z-index: 999;
-        left:360px
-    }
 }
 
 /* Ensure navbar is visible on larger screens */
