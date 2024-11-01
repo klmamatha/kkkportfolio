@@ -11,6 +11,7 @@ html {
 
 body {
     color: #ededed;
+    background: url("wallpaper.jpg");
 }
 
 .header {
@@ -18,20 +19,17 @@ body {
     top: 30px;
     left: 30px;
     width: 90%;
-    padding: 20px, 10px;
+    padding: 20px, 10px; /* Corrected padding syntax */
     background: transparent;
     display: flex;
     justify-content: space-between;
     align-items: center;
     z-index: 100;
-    position: fixed;
-    z-index: 1000;
     transition: background-color 0.3s ease;
 }
 
 .sticky {
-    position: relative;
-    /* Slightly transparent */
+    position: absolute;
 }
 
 .logo {
@@ -67,7 +65,6 @@ body {
     width: 100%;
     justify-content: space-between;
     height: 100vh;
-    background: url("wallpaper.jpg");
     background-position: center;
     display: grid;
     grid-template-columns: auto auto;
@@ -81,7 +78,6 @@ body {
     opacity: 0;
     animation: slideBottom 1s ease forwards;
     animation-delay: .7s;
-    text-align: center;
 }
 
 .home-content h3:nth-last-of-type(2) {
@@ -94,13 +90,97 @@ body {
     color: #0ef;
 }
 
+.home-content h1 {
+    font-size: 56px;
+    font-weight: 700px;
+    margin: -3px 0;
+    opacity: 0;
+    animation: slideRight 1s ease forwards;
+    animation-delay: 1s;
+}
 
 .home-content p {
     font-size: 20px;
-    line-height: 30px;
     opacity: 0;
     animation: slideLeft 1s ease forwards;
     animation-delay: 1s;
+}
+
+.home-sci a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: 2px solid #0ef;
+    border-radius: 50%;
+    font-size: 20px;
+    color: #0ef;
+    text-decoration: none;
+    margin: 30px 15px 30px 0;
+    transition: .5s ease;
+    opacity: 0;
+    animation: slideLeft 1s ease forwards;
+    animation-delay: calc(.2s * var(--i));
+}
+
+.home-sci a:hover {
+    color: #081b;
+    background: #0ef;
+    box-shadow: 0 0 20px #0ef;
+}
+
+.btn-box {
+    display: inline-block;
+    text-decoration: none;
+    color: #081b29;
+    padding: 12px 28px;
+    border-radius: 40px;
+    background: #0ef;
+    letter-spacing: 1px;
+    font-weight: 600;
+    opacity: 1;
+    animation: slideTop 1s ease forwards;
+    animation-delay: 25s;
+    box-shadow: 0 0 5px #0ef, 0 0 25 #0ef;
+}
+
+.btn-box:hover {
+    box-shadow: 0 0 5px cyan, 0 0 25px cyan, 0 0 50px cyan, 0 0 50px cyan, 0 0 500px;
+}
+
+.home-right img {
+    border-radius: 500px;
+    box-shadow: 0 0 50px #0ef;
+    object-fit: fill;
+    height: 300px;
+    width: 300px;
+    opacity: 0;
+    animation: slideRight 3s ease forwards;
+    animation-iteration-count: infinite;
+}
+
+/* Wave Animation */
+@keyframes wave {
+    0% {
+        transform: translateY(10);
+    }
+    20% {
+        transform: translateY(15px); /* Move up */
+    }
+    40% {
+        transform: translateY(5px); /* Move down slightly */
+    }
+    60% {
+        transform: translateY(10px); /* Move up */
+    }
+    80% {
+        transform: translateY(5px); /* Move down slightly */
+    }
+    100% {
+        transform: translateY(0); /* Return to original position */
+    }
 }
 
 @keyframes slideRight {
@@ -150,17 +230,31 @@ body {
         opacity: 1;
     }
 }
-
+@keyframes swing {
+    0% {
+        transform: translateY(0);
+    }
+    25% {
+        transform: translateY(-20px); /* Swing up */
+    }
+    50% {
+        transform: translateY(0);
+    }
+    75% {
+        transform: translateY(10px); /* Swing down */
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
 .topmate-button {
     background: #0ef;
     border-radius: 30px;
     padding: 10px;
-    border: 0px;
     float: inline-end;
     margin-top: 60px;
     color: #f7f8f8;
     border: 1px solid #f6fafa;
-    border-radius: 24px;
     font-size: 15px;
     font-weight: 700;
     line-height: 28px;
@@ -175,6 +269,10 @@ body {
 
 .topmate-button:hover {
     box-shadow: 0 0 5px cyan, 0 0 25px cyan, 0 0 50px cyan, 0 0 50px cyan, 0 0 500px;
+}
+
+.text {
+    font-size: 50px;
 }
 
 .popup-overlay {
@@ -215,6 +313,13 @@ body {
     height: 400px;
     border: none;
 }
+
+.text {
+    font-size: 40px;
+}
+
+/* General styles remain unchanged */
+
 @media (max-width: 1024px) {
     .header {
         padding: 20px 30px;
@@ -226,6 +331,29 @@ body {
         align-items: center; /* Center content */
         padding: 80px 5%;
 
+    }
+   
+    .home-right {
+        order: 1; /* Image appears first */
+        display: flex; /* Flex to center the image */
+        justify-content: center; /* Center image */
+        margin-bottom: 20px; /* Add margin for spacing */
+        margin-right: 40px;
+        margin-top:20px;
+    }
+    .home-content {
+        order: 2; /* Content appears second */
+        text-align: center; /* Center the text */
+        width: 100%; /* Make content full width */
+        padding: 0 20px; /* Add some padding */
+    }
+    .home-right img {
+        width: 80%; /* Make image responsive */
+        max-width: 300px; /* Limit max width */
+        height:auto; /* Maintain aspect ratio */
+        border-radius: 50%;
+        animation: none; /* Stop the animation on mobile */
+        opacity: 1; /* Ensure the image is visible */     
     }
     /* Show hamburger menu on smaller screens */
     .menu-toggle {
@@ -282,6 +410,7 @@ body {
         left:360px
     }
 }
+
 /* Ensure navbar is visible on larger screens */
 @media (min-width: 1025px) {
     .navbar {
@@ -297,5 +426,15 @@ body {
         align-items: center; /* Center content */
         padding: 80px 5%;
     }
+    
+    .home-right {
+        order: 2; /* Image appears first */
+        display: flex; /* Flex to center the image */
+        justify-content: center; /* Center image */
+    }
+    
+    .home-content {
+        order: 1; /* Content appears second */
+        text-align: center; /* Center the text */
+    }
 }
-

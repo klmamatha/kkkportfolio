@@ -69,13 +69,14 @@ body {
     height: 100vh;
     background: url("wallpaper.jpg");
     background-position: center;
-    display: grid;
-    grid-template-columns: auto auto;
+    display: flex;
+    flex-direction: row;
     align-items: center;
+    gap:50px;
     padding: 70px 10% 0;
 }
 
-.home-content h3 {
+.home-content h2 {
     font-size: 32px;
     font-weight: 700;
     opacity: 0;
@@ -84,23 +85,51 @@ body {
     text-align: center;
 }
 
-.home-content h3:nth-last-of-type(2) {
+.home-content h2:nth-last-of-type(2) {
     margin-bottom: 30px;
     animation: slideTop 1s ease forwards;
     animation-delay: .7s;
 }
 
-.home-content h3 span {
+.home-content h2 span {
     color: #0ef;
 }
+.highlight {
+    color: #4aa6f7;
+}
 
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4em;
+    margin-top: 1em;
+}
 
-.home-content p {
-    font-size: 20px;
-    line-height: 30px;
-    opacity: 0;
-    animation: slideLeft 1s ease forwards;
-    animation-delay: 1s;
+.skill-card {
+    background-color: #1d3557;
+    padding: 1em;
+    border-radius: 10px;
+    text-align: center;
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.skill-card img {
+    width: 100px;
+    height: 40px;
+    margin-bottom: 0.5em;
+}
+
+.skill-card p {
+    font-size: 1.2em;
+}
+
+.skill-card:hover {
+    transform: scale(1.1);
+    background-color: #4aa6f7;
+}
+
+.active {
+    background-color: #4aa6f7;
 }
 
 @keyframes slideRight {
