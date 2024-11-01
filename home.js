@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const resumeButton = document.querySelector('.btn-box');
     resumeButton.addEventListener('click', (e) => {
         e.preventDefault();
-        window.open('../Assets/kranthi resume.pdf', '_blank');
+        window.open('kranthi_resume.pdf', '_blank');
     });
 
     // Social media links functionality
