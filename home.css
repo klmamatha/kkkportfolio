@@ -29,7 +29,7 @@ body {
 }
 
 .sticky {
-    background-color: rgba(51, 51, 51, 0.9);
+    position: absolute;
 }
 
 .logo {
@@ -251,12 +251,10 @@ body {
     background: #0ef;
     border-radius: 30px;
     padding: 10px;
-    border: 0px;
     float: inline-end;
     margin-top: 60px;
     color: #f7f8f8;
     border: 1px solid #f6fafa;
-    border-radius: 24px;
     font-size: 15px;
     font-weight: 700;
     line-height: 28px;
@@ -332,59 +330,55 @@ body {
         flex-direction: column; /* Stack content vertically */
         align-items: center; /* Center content */
         padding: 80px 5%;
-    }
-    .home-content {
-        order: 2; /* Content appears second */
-        text-align: center; /* Center the text */
-    }
 
+    }
+   
     .home-right {
         order: 1; /* Image appears first */
         display: flex; /* Flex to center the image */
         justify-content: center; /* Center image */
         margin-bottom: 20px; /* Add margin for spacing */
+        margin-right: 40px;
+        margin-top:20px;
     }
-    .home-right img {
-        animation: none; /* Stop the animation on mobile */
-        opacity: 1; /* Ensure the image is visible */
-    }
-
     .home-content {
         order: 2; /* Content appears second */
         text-align: center; /* Center the text */
         width: 100%; /* Make content full width */
         padding: 0 20px; /* Add some padding */
     }
-
     .home-right img {
         width: 80%; /* Make image responsive */
         max-width: 300px; /* Limit max width */
-        height: auto; /* Maintain aspect ratio */
+        height:auto; /* Maintain aspect ratio */
+        border-radius: 50%;
+        animation: none; /* Stop the animation on mobile */
+        opacity: 1; /* Ensure the image is visible */     
     }
     /* Show hamburger menu on smaller screens */
     .menu-toggle {
         display: block; /* Show hamburger menu */
-        position: fixed;
-        right: 30px; /* Place toggle on the right side */
+        position: relative;
+        right: 20px; /* Place toggle on the right side */
     }
-
-    /* Hide navbar on small screens */
+/* Hide navbar on small screens */
     .navbar {
         display: none; /* Hide navbar on mobile */
+        background: rgba(54, 167, 219, 0.9);
     }
 
     .navbar.active {
         display: flex; /* Show navbar when active */
         flex-direction: column;
         position: absolute;
-        top: 70px;
+        top: 60px;
         right: 0; /* Menu opens on the right side */
-        width: 30%; /* Adjust width to fit content on the right */
+        width: 25%; /* Adjust width to fit content on the right */
         background: rgba(54, 167, 219, 0.9);
-        padding: 20px;
+        padding: 20px 0px;
         gap: 15px;
         border-radius: 20px;
-        text-align: right; /* Align text to the right */
+        text-align:center; /* Align text to the right */
     }
 
     .navbar a {
@@ -398,6 +392,22 @@ body {
 
     .home-content p {
         font-size: 1rem;
+    }
+    .topmate-button {
+        background: #0ef;
+        border-radius: 30px;
+        padding: 5px;
+        float: inline-end;
+        margin-top: 60px;
+        color: #f7f8f8;
+        border: 1px solid #f6fafa;
+        font-size: 13px;
+        position: fixed !important;
+        bottom: 40px;
+        width: 110px;
+        cursor: pointer;
+        z-index: 999;
+        left:360px
     }
 }
 
